@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7288572133356547391}
-  - component: {fileID: 6423606545420448550}
+  - component: {fileID: 3274849134702262170}
   - component: {fileID: 7352060463187908225}
   m_Layer: 0
   m_Name: Apple Pickup
@@ -66,7 +66,7 @@ Transform:
   - {fileID: 7411517029786437705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6423606545420448550
+--- !u!114 &3274849134702262170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3711463290480613875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318e4ed8a354e6940909c8c367513076, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b9b02e793ab8b14392bab36a980e89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &7352060463187908225
