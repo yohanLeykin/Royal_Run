@@ -279,6 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d72b0bf0d462d240b4ae1001b7c7e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2064551858}
+  collisionCoolDown: 1
+  adjustChangeMoveSpeedAmount: -2
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +842,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2064551858 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1014860696115371117, guid: dcbc89efbe5bd174b99e07c76bd0b6bf, type: 3}
+  m_PrefabInstance: {fileID: 1258041319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097487373
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +934,8 @@ MonoBehaviour:
   chunkLength: 10
   chunkParent: {fileID: 1639146034}
   moveSpeed: 10
+  minMoveSpeed: 2
+  maxMoveSpeed: 20
 --- !u!4 &2147198824
 Transform:
   m_ObjectHideFlags: 0
