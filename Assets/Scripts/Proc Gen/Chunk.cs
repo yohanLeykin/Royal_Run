@@ -16,6 +16,9 @@ public class Chunk : MonoBehaviour
     [SerializeField] float appleSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
     List<int> availableLanes = new List<int> { 0, 1, 2 };
+    LevelGenerator levelGenerator;
+    ScoreManager scoreManager;
+
     void Start()
     {
         SpawnFences();
@@ -23,9 +26,15 @@ public class Chunk : MonoBehaviour
         SpawnCoin();
     }
 
+    public void Init(LevelGenerator levelGenerator, ScoreManager scoreManager)
+    {
+        this.levelGenerator = levelGenerator;
+        this.scoreManager = scoreManager;
+    }
+
     private void SpawnCoin()
     {
-        if (UnityEngine.Random.value > coinSpawnChance || availableLanes.Count <= 0 ) return;
+        if (UnityEngine.Random.value > coinSpawnChance || availableLanes.Count <= 0) return;
         int numberOfCoins = UnityEngine.Random.Range(1, 5);
         int selectedLane = SelectLane();
         for (int i = 0; i < numberOfCoins; i++)
@@ -46,7 +55,8 @@ public class Chunk : MonoBehaviour
 
             int selectedLane = SelectLane();
             var spawnPosition = new Vector3(lanes[selectedLane], transform.position.y - fenceHeight, transform.position.z);
-            Instantiate(fencePrefab, spawnPosition, quaternion.identity, this.transform);
+            Coin newCoin = Instantiate(fencePrefab, spawnPosition, quaternion.identity, this.transform).GetComponent<Coin>();
+            newCoin.Init(scoreManager);
         }
     }
 
@@ -60,9 +70,11 @@ public class Chunk : MonoBehaviour
 
     void SpawnApple()
     {
-            if (UnityEngine.Random.value > appleSpawnChance || availableLanes.Count <= 0 ) return;
-            int selectedLane = SelectLane();
-            var spawnPosition = new Vector3(lanes[selectedLane], transform.position.y + appleHeight, transform.position.z - 1.6f);
-            Instantiate(applePrefab, spawnPosition, quaternion.identity, this.transform);
+        if (UnityEngine.Random.value > appleSpawnChance || availableLanes.Count <= 0) return;
+        int selectedLane = SelectLane();
+        var spawnPosition = new Vector3(lanes[selectedLane], transform.position.y + appleHeight, transform.position.z - 1.6f);
+        Apple newApple = Instantiate(applePrefab, spawnPosition, quaternion.identity, this.transform).GetComponent<Apple>();
+        newApple.Init(levelGenerator);
+            
     }
 }
