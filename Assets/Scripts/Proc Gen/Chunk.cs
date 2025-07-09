@@ -40,7 +40,8 @@ public class Chunk : MonoBehaviour
         for (int i = 0; i < numberOfCoins; i++)
         {
             var spawnPosition = new Vector3(lanes[selectedLane], transform.position.y + appleHeight, transform.position.z - 1.6f + (i * 1.5f));
-            Instantiate(coinPrefab, spawnPosition, quaternion.identity, this.transform);
+            Coin newCoin = Instantiate(coinPrefab, spawnPosition, quaternion.identity, this.transform).GetComponent<Coin>();
+            newCoin.Init(scoreManager);
 
         }
     }
@@ -55,8 +56,8 @@ public class Chunk : MonoBehaviour
 
             int selectedLane = SelectLane();
             var spawnPosition = new Vector3(lanes[selectedLane], transform.position.y - fenceHeight, transform.position.z);
-            Coin newCoin = Instantiate(fencePrefab, spawnPosition, quaternion.identity, this.transform).GetComponent<Coin>();
-            newCoin.Init(scoreManager);
+            Instantiate(fencePrefab, spawnPosition, quaternion.identity, this.transform);
+            
         }
     }
 
